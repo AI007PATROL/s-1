@@ -233,19 +233,57 @@ revealEls.forEach(el => {
   draw();
 })();
 
-// Mobile menu toggle
-const mobileMenuBtn = document.createElement('button');
-mobileMenuBtn.className = 'menu-toggle';
-mobileMenuBtn.innerHTML = '☰';
-mobileMenuBtn.setAttribute('aria-label', 'Toggle navigation menu');
-
-const header = document.querySelector('.header-inner');
-header.insertBefore(mobileMenuBtn, header.querySelector('.nav'));
-
+// Mobile sliding navigation
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const nav = document.querySelector('.nav');
-mobileMenuBtn.addEventListener('click', () => {
-  nav.classList.toggle('active');
-  mobileMenuBtn.innerHTML = nav.classList.contains('active') ? '✕' : '☰';
+const overlay = document.querySelector('.mobile-nav-overlay');
+let touchStartX = 0;
+let touchEndX = 0;
+
+function toggleMenu(show) {
+  mobileMenuBtn?.classList.toggle('active', show);
+  nav?.classList.toggle('active', show);
+  overlay?.setAttribute('aria-hidden', show ? 'false' : 'true');
+  document.body.style.overflow = show ? 'hidden' : '';
+}
+
+// Click handlers
+mobileMenuBtn?.addEventListener('click', () => {
+  const isOpen = nav?.classList.contains('active');
+  toggleMenu(!isOpen);
+});
+
+overlay?.addEventListener('click', () => toggleMenu(false));
+
+// Touch gesture handlers
+document.addEventListener('touchstart', e => {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+document.addEventListener('touchend', e => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipeGesture();
+});
+
+function handleSwipeGesture() {
+  const swipeDistance = touchEndX - touchStartX;
+  const isOpen = nav?.classList.contains('active');
+  
+  // Open on right swipe, close on left swipe
+  if (Math.abs(swipeDistance) > 50) { // minimum swipe distance
+    if (swipeDistance > 0 && !isOpen) { // right swipe when closed
+      toggleMenu(true);
+    } else if (swipeDistance < 0 && isOpen) { // left swipe when open
+      toggleMenu(false);
+    }
+  }
+}
+
+// Close menu when clicking a nav link
+nav?.addEventListener('click', e => {
+  if (e.target.classList.contains('nav-link')) {
+    toggleMenu(false);
+  }
 });
 
 console.log("INFINITE TECHFEST'25 — scripts loaded");
