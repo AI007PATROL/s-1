@@ -244,14 +244,20 @@ p {
 
 .nav {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
   align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+  background: #0047AB;
+  width: 100%;
+  margin-top: 8px;
 }
 
 .nav-link {
-  color: var(--text-light);
+  color: white;
   text-decoration: none;
   font-weight: 500;
+  font-size: 16px;
   transition: color 0.2s ease;
 }
 
@@ -2323,20 +2329,18 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 15px;
   }
   
-  .mobile-menu-btn {
-    display: none;
-  }
-  
   .header-inner {
     padding: 12px;
   }
   
   .nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    padding: 4px;
+    gap: 16px;
+    padding: 10px 0;
+  }
+  
+  .nav-link {
+    font-size: 14px;
+  }
   }
   
   .nav-link {
