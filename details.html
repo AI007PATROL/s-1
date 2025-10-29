@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Event Details — Pragya 2k25</title>
+  <link rel="stylesheet" href="styles/style.css">
+
+  <!-- Animation and font imports -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+
+<body class="dark">
+<header class="site-header">
+  <div class="header-inner container">
+  <a class="brand" href="index.html"><span class="brand-text">INFINITE <strong>TECHFEST'25</strong><small class="brand-sub">PRAGYA 2K25</small></span></a>
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="events.html" class="nav-link">Events</a>
+      <a href="details.html" class="nav-link active">Event Details</a>
+      <a href="workshop.html" class="nav-link">Workshop</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="details-section fade-in">
+  <h2 class="animate__animated animate__fadeInDown">Event Details</h2>
+  <label for="event-select" class="label">Select Event</label>
+  <select id="event-select" class="select">
+    <option value="">-- Choose an event --</option>
+  </select>
+
+  <div id="event-card" class="event-detail-card hidden animate__animated animate__fadeInUp">
+    <h3 id="ev-name"></h3>
+    <p class="meta" id="ev-date"></p>
+    <p id="ev-desc"></p>
+
+    <h4>Rounds / Structure</h4>
+    <div id="ev-rounds"></div>
+
+    <h4>Rules & Guidelines</h4>
+    <ul id="ev-rules"></ul>
+
+    <h4>Coordinators</h4>
+    <div id="ev-coords"></div>
+
+    <div class="card-actions" id="ev-actions"></div>
+  </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© 2025 <b>PRAGYA 2K25</b> | R P Sarathy Institute of Technology</p>
+  </div>
+</footer>
+
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-panel glass">
+      <button id="modalClose" class="modal-close" aria-label="Close">✕</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+<script src="scripts/main.js"></script>
+</body>
+</html>
