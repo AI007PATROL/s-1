@@ -244,25 +244,26 @@ p {
 
 .nav {
   display: flex;
-  gap: 2rem;
-  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
   justify-content: center;
-  padding: 12px 0;
-  background: #0047AB;
-  width: 100%;
-  margin-top: 8px;
+  padding: 6px 0;
 }
 
 .nav-link {
-  color: white;
+  color: #fff;
   text-decoration: none;
-  font-weight: 500;
-  font-size: 16px;
-  transition: color 0.2s ease;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: all 0.2s ease;
 }
 
-.nav-link:hover {
-  color: var(--accent);
+.nav-link:hover,
+.nav-link.active {
+  background: #facc15;
+  color: #111827;
+  font-weight: 600;
 }
 
 @keyframes glow {
@@ -2325,22 +2326,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
-  body { 
-    font-size: 15px;
-  }
-  
   .header-inner {
-    padding: 12px;
+    flex-direction: column;
+    align-items: center;
   }
-  
   .nav {
-    gap: 16px;
-    padding: 10px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 4px;
   }
-  
   .nav-link {
+    margin: 2px 4px;
+    padding: 5px 8px;
     font-size: 14px;
   }
+  .site-header {
+    padding: 6px 0;
+  }}
   }
   
   .nav-link {
